@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой список книг для чтения</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .book-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .book {
+            padding: 12px;
+            margin-bottom: 10px;
+            background-color: #e8f4fc;
+            border-left: 5px solid #3498db;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .book:hover {
+            background-color: #d4e6f1;
+        }
+        .author {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .status {
+            background-color: #2ecc71;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Мой список книг для чтения</h1>
+    
+    <div class="book-list">
+        <div class="book">
+            <div>
+                <strong>1984</strong>
+                <span class="author">Джордж Оруэлл</span>
+            </div>
+            <span class="status">Прочитано</span>
+        </div>
+        
+        <div class="book">
+            <div>
+                <strong>Мастер и Маргарита</strong>
+                <span class="author">Михаил Булгаков</span>
+            </div>
+            <span class="status">В процессе</span>
+        </div>
+        
+        <div class="book">
+            <div>
+                <strong>Три товарища</strong>
+                <span class="author">Эрих Мария Ремарк</span>
+            </div>
+            <span class="status">В планах</span>
+        </div>
+        
+        <div class="book">
+            <div>
+                <strong>Атлант расправил плечи</strong>
+                <span class="author">Айн Рэнд</span>
+            </div>
+            <span class="status">В планах</span>
+        </div>
+        
+        <div class="book">
+            <div>
+                <strong>Маленький принц</strong>
+                <span class="author">Антуан де Сент-Экзюпери</span>
+            </div>
+            <span class="status">Прочитано</span>
+        </div>
+    </div>
+    
+    <footer>
+        Последнее обновление: <span id="current-date"></span>
+    </footer>
+
+    <script>
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('ru-RU', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    </script>
+</body>
+</html>
