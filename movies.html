@@ -3,49 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои любимые фильмы</title>
+    <title>Топ фильмов по версии Кинопоиска</title>
     <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #ff6b6b;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             color: #333;
+            background: linear-gradient(135deg, var(--light) 0%, #e2e2e2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
             text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        ul {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
-        li {
-            margin-bottom: 10px;
-            padding: 8px;
-            background-color: #f9f9f9;
-            border-left: 4px solid #4CAF50;
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        .movies-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .movie-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .movie-poster {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .movie-info {
+            padding: 1.5rem;
+        }
+        
+        .movie-title {
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem;
+            color: var(--dark);
+        }
+        
+        .movie-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .rating {
+            color: white;
+            background-color: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .movie-description {
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background-color: rgba(255,255,255,0.2);
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .movies-list {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Мои любимые фильмы</h1>
-    <ul>
-        <li>Зеленая миля (1999)</li>
-        <li>Побег из Шоушенка (1994)</li>
-        <li>Форрест Гамп (1994)</li>
-        <li>Интерстеллар (2014)</li>
-		<li>Терминатор (1984)</li>
-    </ul>
-    <p>Последнее обновление: <span id="date"></span></p>
+    <div class="container">
+        <header>
+            <h1>Топ фильмов по версии Кинопоиска</h1>
+            <p class="subtitle">Лучшие кинокартины всех времен</p>
+            <div class="nav-links">
+                <a href="books.html">Список книг</a>
+                <a href="about.html">О проекте</a>
+            </div>
+        </header>
+        
+        <div class="movies-list">
+            <!-- Фильм 1 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/022a58e3-5d6f-46e5-a6a3-13b6d4d6a2b2/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Побег из Шоушенка</h3>
+                    <div class="movie-meta">
+                        <span>1994, Драма</span>
+                        <span class="rating">9.1</span>
+                    </div>
+                    <p class="movie-description">Невиновный банкир Энди Дюфрейн приговорён к пожизненному заключению в тюрьме Шоушенк. Но он не теряет надежды и разрабатывает дерзкий план побега.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 2 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4057c4b8-8208-4a04-b169-26b0662143e3/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Зелёная миля</h3>
+                    <div class="movie-meta">
+                        <span>1999, Фэнтези</span>
+                        <span class="rating">9.1</span>
+                    </div>
+                    <p class="movie-description">В тюрьме для смертников появляется заключенный с божественным даром. Пол Эджкомб — начальник блока, где содержатся преступники, и его жизнь меняется навсегда.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 3 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/9de76993-9c48-413d-922e-b57b50494b0d/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Форрест Гамп</h3>
+                    <div class="movie-meta">
+                        <span>1994, Драма</span>
+                        <span class="rating">8.9</span>
+                    </div>
+                    <p class="movie-description">Отстающий в развитии Форрест Гамп становится свидетелем и невольным участником важнейших событий американской истории 20 века.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 4 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/430042eb-ee69-4818-aed0-a312400a26bf/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Интерстеллар</h3>
+                    <div class="movie-meta">
+                        <span>2014, Фантастика</span>
+                        <span class="rating">8.6</span>
+                    </div>
+                    <p class="movie-description">Когда засуха приводит человечество к продовольственному кризису, команда исследователей отправляется сквозь червоточину в поисках нового дома.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 5 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/bf93b465-1189-4155-9dd1-cb9fb5cb1bb5/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">1+1</h3>
+                    <div class="movie-meta">
+                        <span>2011, Драма</span>
+                        <span class="rating">8.8</span>
+                    </div>
+                    <p class="movie-description">Парализованный аристократ нанимает в сиделки бывшего заключенного. Искренняя дружба между ними меняет жизни обоих.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 6 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/5e4b265d-6731-4a12-9e1a-1c4110ae506b/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Крёстный отец</h3>
+                    <div class="movie-meta">
+                        <span>1972, Криминал</span>
+                        <span class="rating">8.7</span>
+                    </div>
+                    <p class="movie-description">Эпическая сага о сицилийской мафиозной семье Корлеоне, охватывающая период с 1945 по 1955 годы.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 7 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/5c3af082-6a5e-4e7a-a594-5c6f8e7d7a3e/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Список Шиндлера</h3>
+                    <div class="movie-meta">
+                        <span>1993, Драма</span>
+                        <span class="rating">8.8</span>
+                    </div>
+                    <p class="movie-description">История немецкого промышленника, спасшего во время Холокоста более тысячи евреев, предоставив им работу на своих заводах.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 8 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/0b76b2a2-d1c7-4f04-a284-80ff7bb809a4/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Властелин колец: Возвращение короля</h3>
+                    <div class="movie-meta">
+                        <span>2003, Фэнтези</span>
+                        <span class="rating">8.7</span>
+                    </div>
+                    <p class="movie-description">Завершающая часть трилогии о Кольце Всевластия и последней битве за Средиземье.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 9 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/9c0ad61f-78ff-4e7e-9d5b-1b153e1c4547/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Бойцовский клуб</h3>
+                    <div class="movie-meta">
+                        <span>1999, Триллер</span>
+                        <span class="rating">8.7</span>
+                    </div>
+                    <p class="movie-description">Страдающий бессонницей офисный работник и харизматичный торговец мылом создают подпольный бойцовский клуб.</p>
+                </div>
+            </div>
+            
+            <!-- Фильм 10 -->
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/3560b757-9b95-45ec-af8c-52197210c925/600x900')"></div>
+                <div class="movie-info">
+                    <h3 class="movie-title">Назад в будущее</h3>
+                    <div class="movie-meta">
+                        <span>1985, Фантастика</span>
+                        <span class="rating">8.6</span>
+                    </div>
+                    <p class="movie-description">Подросток Марти МакФлай случайно отправляется в 1955 год на машине времени, созданной его другом-учёным.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Последнее обновление: <span id="date"></span></p>
+        </footer>
+    </div>
 
     <script>
-        document.getElementById('date').textContent = new Date().toLocaleDateString();
+        document.getElementById('date').textContent = new Date().toLocaleDateString('ru-RU', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
     </script>
 </body>
-<a href="books.html">Список книг</a>
-<a href="about.html">About...</a>
-....................................
 </html>
